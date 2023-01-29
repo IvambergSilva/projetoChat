@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    color: #FFF;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#nomeDaSala {
+    border-radius: 10px;
+    height: 40px;
+    margin: 10px;
+    padding: 0 10px;
+}
+
+#criarSala {
+    margin-bottom: 30px;
+}
+
+#modalGrupo {
+    background-color: rgb(196, 232, 255);
+    width: fit-content;
+    height: fit-content;
+    color: #000;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#adicionarNovaSala {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: blue;
+    color: #FFF;
+    cursor: pointer;
+}
