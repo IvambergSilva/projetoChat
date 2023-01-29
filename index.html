@@ -5,21 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/style.css">
-    <title>Document</title>
+    <title>Projeto - Chat</title>
 </head>
 <body>
-    <header></header>
-    <main>
-        <div id="modalGrupo">
-            <p>Criar um novo grupo?</p>
-            <input type="text" name="nomeDaSala" id="nomeDaSala" placeholder="Digite o nome do grupo">
-            <br><br>
-            <button id="criarSala">Criar Sala</button>
-            <p>Voltar</p>
+    <header id="header">
+       <div>
+            <h2>Chats</h2>
+            <img src="src/img/pesquisar.svg" alt="">
+       </div>
+    </header>
+    <main id="main">
+        <section>
+            <div id="modalGrupo">
+                <p>Criar um novo grupo?</p>
+                <input type="text" name="nomeDoGrupo" id="nomeDoGrupo" placeholder="Digite o nome do grupo">
+                <br><br>
+                <button id="criarGrupo">Criar Grupo</button>
+                <p id="voltarDoCriarGrupo">Voltar</p>
+            </div>
+            <button id="adicionarNovoGrupo">+</button>
+        </section>
+
+        <p class="quantidade"></p>
+
+        <section id="displayGruposGeral">
+            <!-- <div class="displayGrupo">
+                <div class="displayImagem"></div>
+                <div class="displayTexto">
+                    <stong class="displayNomeDoGrupo">nome</stong>
+                    <p class="displayUltimaMensagem">ultima</p>
+                </div>
+            </div> -->
+        </section>
+
+        <section class="chat">
+            <div class="chatHeader">
+                <img src="src/img/setaVoltar.svg" alt="" class="setaVoltar">
+                <h2 class="chatNome"></h2>
+            </div>
+
+            <div class="containerAreaDeTexto">
+                <section class="areaDeTexto">
+                    <!-- <div class="blocoMensagemRecebida">
+                        <div>
+                            <p class="nomeDoUsuario">Berg Silva</p>
+                            <p class="mensagem">Da</p>
+                        </div>
+                    </div>
+                      -->
+                </section>
+            </div>
+
+
+            <div class="footerAreaDeTexto">
+                <input type="text" name="mensagens" class="mensagens" placeholder="Digite sua mensagem...">
+                <div class="enviarMensagem">
+                    <img src="src/img/enviarMensagem.svg" alt="">
+                </div>
+            </div>
+        </section>
+        <div id="loadExterno">
+            <div id="loadInterno"></div>
         </div>
-        <button id="adicionarNovaSala">+</button>
+
     </main>
-    <footer></footer>
+    <footer>
+
+    </footer>
 
 
     <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app-compat.js"></script>
