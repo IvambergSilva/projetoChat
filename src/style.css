@@ -93,7 +93,11 @@ main section {
     font-family: var(--MontserratAlternates);
 }
 
+<<<<<<< HEAD
 #modalGrupo {
+=======
+#displayCriacaoGrupo {
+>>>>>>> a64dbed (Criando a tela de login)
     background-color: #FFF;
     width: 100%;
     height: fit-content;
@@ -336,3 +340,9 @@ main section {
     height: 20px;
 }
 
+<<<<<<< HEAD
+=======
+#footer {
+    margin: 0;
+}
+>>>>>>> a64dbed (Criando a tela de login)

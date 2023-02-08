@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="paginaLogin.css">
+    <link rel="shortcut icon" href="/src/img/favicon.jpg" type="image/x-icon">
+    <title>HNL - Chat</title>
+</head>
+<body>
+    <header>
+        <div id="sucesso">
+            <p>Usuário criado com sucesso!✔️</p>
+        </div>
+    </header>
+    <main id="main">
+        <div id="containerHome">
+            <img src="/src/img/logoHospitalVerde.png" alt="" class="logo">
+            <div class="containerBotaoLogin">
+                <button id="botaoLogin">Login</button>
+            </div>
+
+            <div id="containerlogin">
+                <div id="inputsLogin">
+                    <div class="containerInput">
+                        <input type="email" name="emailUsuario" id="emailUsuario" placeholder="Seu email">
+                        <div>
+                            <img src="/src/img/email.svg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="containerInput">
+                        <input type="password" name="senhaUsuario" id="senhaUsuario" placeholder="Sua senha">
+                        <div>
+                            <img src="/src/img/senha.svg" alt="">
+                        </div>
+                    </div>
+
+                    <button id="acessarConta">Acessar</button>
+                    <button id="criarNovaConta">Criar uma nova conta</button>
+                </div>
+
+                <div id="inputsCriar">
+                    <div class="containerInput">
+                        <input type="text" name="nomeUsuario" id="criarNomeUsuario" placeholder="Seu nome" required>
+                        <div>
+                            <img src="/src/img/usuario.svg" alt="">
+                        </div>
+                    </div>                 
+
+                    <div class="containerInput">
+                        <input type="email" name="emailUsuario" id="criarEmailUsuario" placeholder="Seu email" required>
+                        <div>
+                            <img src="/src/img/email.svg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="containerInput">
+                        <input type="password" name="criarSenhaUsuario" id="criarSenhaUsuario" placeholder="Sua senha">
+                        <div>
+                            <img src="/src/img/senha.svg" alt="">
+                        </div>
+                    </div>                    
+
+                    <button id="cadastrarConta">Cadastrar</button>
+
+                    <button id="possuiConta">Já possuo uma conta</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-auth-compat.js"></script>
+
+    <script src="/src/firebaseInit.js"></script>
+
+    <script src="paginaLogin.js"></script>
+</body>
+</html>

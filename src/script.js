@@ -1,10 +1,10 @@
 let usuario = 'Berg'
 
-let modalGrupo = document.querySelector('#modalGrupo')
+let displayCriacaoGrupo = document.querySelector('#displayCriacaoGrupo')
 
 let adicionarNovoGrupo = document.querySelector('#adicionarNovoGrupo')
 adicionarNovoGrupo.addEventListener('click', () => {
-    modalGrupo.style.display = 'flex'
+    displayCriacaoGrupo.style.display = 'flex'
     adicionarNovoGrupo.style.display = 'none'
     document.querySelector('#main').style.backgroundColor = '#A7A7A7'
     document.querySelector('#header').style.backgroundColor = '#A7A7A7'
@@ -13,7 +13,7 @@ adicionarNovoGrupo.addEventListener('click', () => {
 let voltarDoCriarGrupo = document.querySelector('#voltarDoCriarGrupo')
 
 voltarDoCriarGrupo.addEventListener('click', () => {
-    modalGrupo.style.display = 'none'
+    displayCriacaoGrupo.style.display = 'none'
     adicionarNovoGrupo.style.display = 'block'
     document.querySelector('#main').style.backgroundColor = '#FFF'
 })
@@ -49,7 +49,7 @@ function criarGrupo(){
             system: true,
         })
         .then(() => {
-            modalGrupo.style.display = 'none'
+            displayCriacaoGrupo.style.display = 'none'
             adicionarNovoGrupo.style.display = 'none'
             window.location.reload(true);
         })
