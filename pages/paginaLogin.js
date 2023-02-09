@@ -75,22 +75,7 @@ function cadastrarUsuario() {
 
 }
 
-document.querySelector('#acessarConta').addEventListener('click', acessar)
-
-function acessar() {
-    console.log('dasdas');
-    firebase
-    .auth()
-    .singInWithEmailAndPassword('ivamberg.silva@hlaureano.org.br', 'ivamberg.silva@hlaureano.org.br')
-    .then(() => {
-        alert('CERTO')
-    })
-    .catch((error) => {
-        if (error.code === 'auth/invalid-email') {
-            alert('Este email é inválido!');
-        }
-    })
-}
+// VALIDAR EMAIL
 
 let aux = ''
 let dominio = ''
@@ -111,10 +96,46 @@ function validarEmail(email){
     else return false
 }
 
-// function guardarUsuario(usuarioCadastrado) {
-//     let user = usuarioCadastrado
-//     console.log(user);
-// }
+// ACESSAR CONTA
+
+document.querySelector('#acessarConta').addEventListener('click', acessar)
+
+function acessar() {
+    liberacaoParaCriacao = true
+
+    email = document.querySelector('#emailUsuario').value 
+    senha = document.querySelector('#senhaUsuario').value 
+
+    if (email === '' || senha === '') {
+        alert('CAMPOS EM BRANCOS')
+        liberacaoParaCriacao = false
+    }
+
+    if (liberacaoParaCriacao) {
+        firebase
+        .auth()
+        .signInWithEmailAndPassword(email, senha)
+        .then(() => {
+            console.log('SUCESS');
+            alert('CERTO')
+
+            document.querySelector('#emailUsuario').value = ''
+            document.querySelector('#emailUsuario').value = ''
+            document.querySelector('#emailUsuario').value = ''
+        })
+        .catch((error) => {
+            if (error.code === 'auth/invalid-email') {
+                alert('Este email é inválido!');
+                console.log('error!!');
+            }
+            console.log(error);
+        })
+
+        setTimeout(() => {
+            window.location.href = "/index.html"; 
+        }, 1000);
+    }
+}
 
 // JÁ POSSUI CONTA
 
@@ -124,3 +145,12 @@ possuiConta.addEventListener('click', () => {
     inputsLogin.style.display = 'flex'
     inputsCriar.style.display = 'none'
 })
+
+// CONTINUAR LOGADO
+
+// firebase.auth().onAuthStateChanged(user => {
+//     if(user) {
+//         window.location.href = "/index.html"; 
+//     }
+//     console.log(user);
+// })

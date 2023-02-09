@@ -1,14 +1,22 @@
-let usuario = 'Berg'
+// ABRIR A ABA DE CRIAÇÃO UM NOVO GRUPO
 
 let displayCriacaoGrupo = document.querySelector('#displayCriacaoGrupo')
 
 let adicionarNovoGrupo = document.querySelector('#adicionarNovoGrupo')
+
 adicionarNovoGrupo.addEventListener('click', () => {
     displayCriacaoGrupo.style.display = 'flex'
     adicionarNovoGrupo.style.display = 'none'
     document.querySelector('#main').style.backgroundColor = '#A7A7A7'
     document.querySelector('#header').style.backgroundColor = '#A7A7A7'
+    document.querySelector('#header div').style.backgroundColor = '#038C4580'
+    
+    for(let i = 0; i < document.querySelector('#displayGruposGeral').childElementCount; i++) {
+        document.querySelector('#displayGruposGeral').children[i].children[0].style.backgroundColor = '#A7A7A7'    
+    }
 })
+
+// FECHAR A ABA DE CRIAÇÃO UM NOVO GRUPO
 
 let voltarDoCriarGrupo = document.querySelector('#voltarDoCriarGrupo')
 
@@ -16,17 +24,18 @@ voltarDoCriarGrupo.addEventListener('click', () => {
     displayCriacaoGrupo.style.display = 'none'
     adicionarNovoGrupo.style.display = 'block'
     document.querySelector('#main').style.backgroundColor = '#FFF'
+    document.querySelector('#header').style.backgroundColor = '#FFF'
+    document.querySelector('#header div').style.backgroundColor = '#038C45'
+
+    for(let i = 0; i < document.querySelector('#displayGruposGeral').childElementCount; i++) {
+        document.querySelector('#displayGruposGeral').children[i].children[0].style.backgroundColor = '#FFF'    
+    }
 })
 
-
-
-
+// CRIAR UM NOVO GRUPO
 
 let buttonCriarGrupo = document.querySelector('#criarGrupo')
 buttonCriarGrupo.addEventListener('click', criarGrupo)
-
-
-
 
 function criarGrupo(){
     let nomeDoGrupo = document.querySelector('#nomeDoGrupo').value
@@ -36,7 +45,7 @@ function criarGrupo(){
     .collection('TOPICOS_MENSAGENS')
     .add({
         nome: nomeDoGrupo,
-        adm: usuario,
+        adm: 'usuario',
         ultimaMensagem: {
             texto: `Grupo ${nomeDoGrupo} criado. Bem vindo(a)!`,
             dataCriacao: firebase.firestore.FieldValue.serverTimestamp(),
@@ -51,17 +60,22 @@ function criarGrupo(){
         .then(() => {
             displayCriacaoGrupo.style.display = 'none'
             adicionarNovoGrupo.style.display = 'none'
+            alert(firebase.auth().currentUser.toJSON())
             window.location.reload(true);
         })
     })
     .catch((erro) => {
         console.log(erro);
     })
-
+    // console.log(firebase.auth().currentUser);
+    // console.log(firebase.auth().currentUser.toJSON());
+    // hasUser()
 }
 
-
-
+// function hasUser(){
+//     const hasUser = firebase.auth().currentUser ? firebase.auth().currentUser.toJSON() : null
+//     console.log(hasUser);
+// }
 
 function buscarGrupos(){
     firebase.
@@ -76,7 +90,7 @@ function buscarGrupos(){
                 id: doc.id,
                 nome: '',
                 ultimaMensagem: { texto: '' },
-                ...doc.data()    
+                ...doc.data()
             }
         })
         if (topicos == 0) {
@@ -88,15 +102,6 @@ function buscarGrupos(){
 }
 
 buscarGrupos()
-
-
-function buscarMensagens(topicos){
-    console.log(topicos);
-    mostrarMensagem(topicos)
-}
-
-mostrarMensagem()
-
 
 let displayGruposGeral = document.querySelector('#displayGruposGeral')
 
@@ -129,7 +134,7 @@ function criarDisplayGrupos(topicos){
 }
 
 
-
+//-------------------------------------------//
 
 document.querySelector('#displayGruposGeral').addEventListener('click', (e) => {
     document.querySelector('.areaDeTexto').children[document.querySelector('.areaDeTexto').childElementCount-1].style.padding = "0 0 25px 0"
@@ -157,7 +162,6 @@ document.querySelector('#displayGruposGeral').addEventListener('click', (e) => {
 
     abrirChat(idChatClicado)
 })
-
 
 let informacoesChat = ''
 
@@ -195,10 +199,7 @@ function abrirChat(idChatClicado) {
             }
         }
     })
-
 }
-
-
 
 
 document.querySelector('.setaVoltar').addEventListener('click', () => {
@@ -239,7 +240,6 @@ function mostrarMensagens(){
 let areaDeTexto = document.querySelector('.areaDeTexto')
 
 function mostrarMensagem(){
-
     firebase.
     firestore()
     .collection('TOPICOS_MENSAGENS')
@@ -339,3 +339,57 @@ function enviarMensagem(topicos){
 //         console.log('entrou');
 //     }, 100);
 // }
+
+
+
+
+let iconeBuscador = document.querySelector('#iconeBuscador')
+
+iconeBuscador.addEventListener('click', () => {
+    document.querySelector('#tituloAreaDeGrupo').style.display = 'none'
+    document.querySelector('#pesquisarNomeDoGrupo').style.display = 'block'
+
+})
+
+// Logout
+
+let iconeSair = document.querySelector('#iconeSair')
+
+iconeSair.addEventListener('click', logout)
+
+function logout() {
+    firebase.auth().signOut().then(() => {
+        setTimeout(() => {
+            window.location.href = "pages/paginaLogin.html"; 
+        }, 1000);
+    }).catch(() => {
+        alert(error)
+    })
+
+    // document.querySelector('.loading').style.display = 'flex'
+
+}
+
+
+// CONTINUAR LOGADO
+
+// firebase.auth().onAuthStateChanged(function(user){
+//     if(user) {
+//         window.location.href = "/index.html"; 
+//     }
+//     console.log(user);
+// })
+
+// firebase.auth().onAuthStateChanged(function(user){
+//     if(!user) {
+//         window.location.href = "pages/paginaLogin.html"; 
+//     }
+//     console.log(user);
+// })
+
+// function buscarMensagens(topicos){
+    //     console.log(topicos);
+    //     mostrarMensagem(topicos)
+    // }
+    
+    // mostrarMensagem()

@@ -5,13 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/style.css">
-    <title>Projeto - Chat</title>
+    <link rel="shortcut icon" href="/src/img/favicon.jpg" type="image/x-icon">
+    <title>HNL - Chat</title>
 </head>
 <body>
     <header id="header">
        <div>
-            <h2>Chats</h2>
-            <img src="src/img/pesquisar.svg" alt="">
+            <img src="src/img/sair.svg" alt="" id="iconeSair">
+            <h2 id="tituloAreaDeGrupo">Salas de Chat</h2>
+            <input type="text" name="pesquisarNomeDoGrupo" id="pesquisarNomeDoGrupo" placeholder="Digite o nome do grupo">
+            <img src="src/img/pesquisar.svg" alt="" id="iconeBuscador">
        </div>
     </header>
 
@@ -20,7 +23,6 @@
             <div id="displayCriacaoGrupo">
                 <p>Criar um novo grupo?</p>
                 <input type="text" name="nomeDoGrupo" id="nomeDoGrupo" placeholder="Digite o nome do grupo">
-                <br><br>
                 <button id="criarGrupo">Criar Grupo</button>
                 <p id="voltarDoCriarGrupo">Voltar</p>
             </div>
@@ -78,6 +80,8 @@
     <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app-compat.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore-compat.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-auth-compat.js"></script>
 
     <script src="src/firebaseInit.js"></script>
 
